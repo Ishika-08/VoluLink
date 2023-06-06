@@ -1,9 +1,78 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
-    <head>
-        <title>VoluLink</title>
-    </head>
-    <body>
-        <h1>VoluLink</h1>
-    </body>
+<head>
+    <title>VoluLink - Connect and Volunteer</title>
+    <link rel="stylesheet" href="CSS/styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>VoluLink</h1>
+            </div>
+            <div class="nav-comp">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#features">Features</a>
+                <a href="#">Contact</a>
+            </div>
+            <div class="buttons">
+                    <button onClick="window.location.href = 'php/register.php'">Register</button>
+                    <button onClick="window.location.href = 'php/login.php'">Log In</button>
+            </div>               
+            
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Find Meaningful Volunteer Opportunities</h1>
+            <p>Join our community and make a difference.</p>
+            <button onClick="window.location.href = 'php/register.php'">Get Started</button>
+        </div>
+    </section>
+
+    <section class="about" id="about">
+        <img src="images/landingPage/about.png"/>
+        <div class="about-text">
+        <h1>ABOUT US</h1>
+        <p>Welcome to our platform, the premier destination for volunteers to discover events, track their volunteer activities, and connect with like-minded individuals who share a passion for making a difference. 
+            Our mission is to empower volunteers and organizations to create a positive impact in their communities by providing a user-friendly and comprehensive platform for volunteer management.
+        </p>
+        </div>
+        
+    </section>
+
+    <section class="features" id="features">
+        <h1>Features</h1>
+        <div class="feature">
+            <i class="fas fa-search"></i>
+            <img src="images/landingPage/discover.png"/>
+            <div class="feature-text">
+                <h3>Discover</h3>
+                <p>Explore a wide range of volunteer events and causes.</p>
+            </div>
+        </div>
+        <div class="feature">
+            <i class="fas fa-calendar-alt"></i>
+            <div class="feature-text">
+                <h3>Participate</h3>
+                <p>Sign up for events and track your volunteer activities.</p>
+            </div>
+            <img src="images/landingPage/participate.png"/>
+        </div>
+        <div class="feature">
+            <i class="fas fa-comments"></i>
+            <img src="images/landingPage/connect.png"/>
+            <div class="feature-text">
+                <h3>Connect</h3>
+                <p>Communicate and collaborate with other volunteers.</p>
+            </div>           
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2023 VoluLink. All rights reserved.</p>
+    </footer>
+</body>
 </html>

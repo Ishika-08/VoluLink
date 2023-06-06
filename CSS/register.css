@@ -1,0 +1,45 @@
+.container{
+    width: 30%;
+    height: 50vh;
+    margin: 5% auto;
+    padding: 5%;
+    border-radius: 2%;
+    box-shadow: 1px 2px 2px 2px gray;
+}
+
+.container > h1{
+    text-align: center;
+    font-size: 3rem;
+}
+
+label, input, button{
+    display: block;
+}
+
+label{
+    font-size: 1.5rem;
+    color: gray;
+}
+
+input, button{
+    width: 90%;
+    padding: 2%;
+    margin: 2% 0;
+    border-radius: 8px;
+}
+
+
+button{
+    color: white;
+    font-weight: 600;
+    font-size: 1.1rem;
+    background-color: blueviolet;
+    margin: 8% 0;
+    border: none;
+}
+
+button:hover{
+    border: 1px double blueviolet;
+    background-color: white;
+    color: blueviolet;
+}
