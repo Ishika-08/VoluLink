@@ -9,6 +9,10 @@
 </head>
 <body>
     <div class="container">
+        <nav>
+            <h3>VoluLink</h3>
+            <img src="../images/EventPage/user.png" alt="user-profile" onClick="window.location.href = 'yourEvents.php'"/>
+        </nav>
         <h1>Events</h1>
 
         <div>
