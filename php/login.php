@@ -4,25 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../CSS/register.css"/>
+    <link rel="stylesheet" href="../CSS/login.css"/>
     <title>Login</title>
 </head>
 <body>
     <div class="container">
         <?php
         session_start();
-        // Establish database connection
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "users";
-
-        $conn = new mysqli($servername, $username, $password, $dbname);
-
-        // Check connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
+        include 'db_connect.php';
 
         if (isset($_POST['username']) && isset($_POST['password'])) {
             // Retrieve the username and password from the login form
@@ -31,22 +20,18 @@
 
             // SQL query to check if the username and password are valid
             $sql = "SELECT * FROM register WHERE username = '$username' AND password = '$password'";
-            $result = $conn->query($sql);
+            $result = $connection->query($sql);
 
             if ($result->num_rows > 0) {
-                // User found, login successful
-                // header("Location: events.php"); // Redirect to events.php
-                // exit();
                 $row = $result->fetch_assoc();
-                $_SESSION['user_id'] = $row['id'];
+                $_SESSION['username'] = $username;
                 header("Location: events.php");
             } else {
                 // Invalid credentials, login failed
-                echo '<h1 class="error-message">Invalid username or password.</h1>';
+                echo '<h4 style="color: red; text-align: center">Invalid username or password.</h4>';
             }
         }
         
-        $conn->close();
         ?>
         <h1>Welcome Back!</h1>
         <form method="post" action="login.php">

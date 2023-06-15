@@ -75,3 +75,7 @@ body{
 .error{
     color: red;
 }
+
+.joined{
+    text-align: center;
+}

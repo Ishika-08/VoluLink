@@ -1,7 +1,7 @@
 .container{
     width: 30%;
-    height: 70vh;
-    margin: 2% auto;
+    height: 50vh;
+    margin: 5% auto;
     padding: 5%;
     border-radius: 2%;
     box-shadow: 1px 2px 2px 2px gray;
@@ -12,7 +12,7 @@
     font-size: 3rem;
 }
 
-label, input, button, select{
+label, input, button{
     display: block;
 }
 
@@ -21,7 +21,7 @@ label{
     color: gray;
 }
 
-input, button, select{
+input, button{
     width: 90%;
     padding: 2%;
     margin: 2% 0;

@@ -8,55 +8,59 @@
     <title>Registration</title>
 </head>
 <body>
+
+
+        <div class="container">
+
         <?php
-        // Establish database connection
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $dbname = "users";
+            include 'db_connect.php';
 
-        $conn = new mysqli($servername, $username, $password, $dbname);
+            if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['gender'])) {
+                // Retrieve the username and password from the registration form
+                $username = $_POST['username'];
+                $password = $_POST['password'];
+                $age = $_POST['age'];
+                $gender = $_POST['gender'];
 
-        // Check connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
+                // SQL query to check if the user is already registered
+                $check_query = "SELECT * FROM register WHERE username = '$username'";
+                $check_result = $connection->query($check_query);
 
-        if (isset($_POST['username']) && isset($_POST['password'])) {
-            // Retrieve the username and password from the registration form
-            $username = $_POST['username'];
-            $password = $_POST['password'];
-
-            // SQL query to check if the user is already registered
-            $check_query = "SELECT * FROM register WHERE username = '$username'";
-            $check_result = $conn->query($check_query);
-
-            if ($check_result->num_rows > 0) {
-                // User is already registered
-                echo "<h2 class='error'>The user is already registered</h2>";
-            } else {
-                // SQL query to insert the data into the database
-                $insert_query = "INSERT INTO register (username, password) VALUES ('$username', '$password')";
-
-                if ($conn->query($insert_query) === TRUE) {
-                    // Registration successful, redirect to another page
-                    header("Location: events.php");
-                    exit();
+                if ($check_result->num_rows > 0) {
+                    // User is already registered
+                    echo "<h3 style='color: red; text-align: center'>The Usename already exists choose another one.</h3>";
                 } else {
-                    echo "Error: " . $insert_query . "<br>" . $conn->error;
+                    // SQL query to insert the data into the database
+                    $insert_query = "INSERT INTO register (username, age, gender, password) VALUES ('$username', '$age', '$gender', '$password')";
+
+                    if ($connection->query($insert_query) === TRUE) {
+                        // Registration successful, redirect to another page
+                        header("Location: login.php");
+                        exit();
+                    } else {
+                        echo "Error: " . $insert_query . "<br>" . $connection->error;
+                    }
                 }
             }
-        }
-        
-        $conn->close();
+
         ?>
-        <div class="container">
+        
         <h1>Welcome!</h1>
         <form method="post" action="register.php">
             <div>
-                <label for="username">Username</label>
+                <label for="username">Full Name</label>
                 <input type="text" name="username" id="username" autocomplete="off"/>
-        
+
+                <label for="age">Age</label>
+                <input type="number" name="age" id="age"/>
+
+                <label for="gender">Gender</label>
+                <select name="gender" id="gender">
+                    <option value="--"> ------</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>    
+
                 <label for="password">Password</label>
                 <input type="password" name="password" id="password" autocomplete="off"/>
         
